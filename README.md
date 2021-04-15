@@ -82,10 +82,3 @@ data class Person(var name:String = "", var nickname:String = "")
               invalidateAll()
    }
  
-
-
-
-![image](https://user-images.githubusercontent.com/53125879/114949684-5b149500-9e06-11eb-983d-465233c71f74.png)
-
-
-![image](https://user-images.githubusercontent.com/53125879/114949724-7089bf00-9e06-11eb-8868-584b9b834759.png)
