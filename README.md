@@ -47,6 +47,8 @@ in MainActivity.kt
 
 private lateinit var binding: ActivityMainBinding
 
+binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+ 
 ### step 4. Use the binding object to replace all calls to findViewById()
 
 binding.nicknameText.text = binding.nicknameEdit.text.toString()
