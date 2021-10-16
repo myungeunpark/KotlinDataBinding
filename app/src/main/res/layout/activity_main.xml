@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <data>
         <variable
-        name="person"
-        type="com.mepark.aboutme.Person" />
+            name="vm"
+            type="com.mepark.aboutme.DataViewModel" />
     </data>
 <LinearLayout
     xmlns:tools="http://schemas.android.com/tools"
@@ -17,7 +17,7 @@
         android:id="@+id/title"
         style="@style/nameStyle"
         android:padding="20dp"
-        android:text="@={person.name}" />
+        android:text="@{vm.person.name}" />
 
     <TextView
         android:id="@+id/nickname"
@@ -31,7 +31,7 @@
         android:padding="5dp"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
-        android:text="@={person.nickname}"
+        android:text="@{vm.person.nickname}"
         android:visibility="gone" />
 
     <EditText
@@ -46,6 +46,7 @@
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:text="@={vm.person.nickname}"
         android:textSize="18sp" />
 
     <Button
@@ -56,7 +57,8 @@
         android:layout_gravity="center"
         android:layout_margin="20dp"
         android:padding="10dp"
-        android:text="Done" />
+        android:text="Done"
+        />
 
     <ImageView
         android:id="@+id/imageView"

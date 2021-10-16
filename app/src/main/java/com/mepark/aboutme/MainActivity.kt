@@ -1,37 +1,33 @@
 package com.mepark.aboutme
 
 import android.content.Context
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
-import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import com.mepark.aboutme.databinding.ActivityMainBinding
-import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private val person = Person("Moon Family", "James and Sunny", 40)
-
+    //private val person = Person("Moon Family")
+    private lateinit  var  viewModel : DataViewModel
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //setContentView(R.layout.activity_main)
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
 
-        binding.person = person
-        binding.invalidateAll()
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.lifecycleOwner = this
+
+        viewModel = ViewModelProvider(this).get(DataViewModel::class.java)
+        binding.vm = viewModel
+
         binding.button.setOnClickListener {
 
             binding.apply {
 
                 nickname.visibility = View.VISIBLE
-                //nickname.text = editText.text
-                person?.nickname = editText.text.toString()
                 invalidateAll()
 
                 button.visibility = View.GONE
@@ -57,7 +53,6 @@ class MainActivity : AppCompatActivity() {
                 val inputMethod = getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
                 inputMethod.showSoftInput(editText, 0)
             }
-
 
         }
 
